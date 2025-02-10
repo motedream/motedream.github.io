@@ -1,20 +1,4 @@
-/**
- * WEBSITE: https://themefisher.com
- * TWITTER: https://twitter.com/themefisher
- * FACEBOOK: https://www.facebook.com/themefisher
- * GITHUB: https://github.com/themefisher/
- */
 
-/*!------------------------------------------------------------------
-[MAIN STYLESHEET]
-
-PROJECT:	Project Name
-VERSION:	Versoin Number
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[TABLE OF CONTENTS]
--------------------------------------------------------------------*/
-/*  typography */
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
 body {
   line-height: 1.7;
@@ -69,7 +53,7 @@ h6, .h6 {
   font-size: 13px;
 }
 
-/* Button style */
+
 .btn {
   font-size: 14px;
   font-family: "Nunito Sans", sans-serif;
@@ -130,7 +114,7 @@ body {
   color: #fff;
 }
 
-/* preloader */
+
 .preloader {
   position: fixed;
   top: 0;
@@ -248,7 +232,7 @@ mark {
   border-radius: 50px;
 }
 
-/* badge */
+
 .badge {
   border-radius: 0;
   position: absolute;
@@ -266,7 +250,7 @@ mark {
   background-color: #4FD675;
 }
 
-/* overlay */
+
 .overlay {
   position: relative;
 }
@@ -617,7 +601,7 @@ mark {
     transform: scale(1);
   }
 }
-/* search */
+
 .search-bar {
   position: relative;
   background-color: #F9F9F9;
@@ -1707,4 +1691,3 @@ mark {
   background: #4FD675;
   color: #fff;
 }
-/*# sourceMappingURL=style.css.map */
