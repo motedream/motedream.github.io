@@ -4,12 +4,18 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    component: () => import('../components/home.vue'),
+    component: () => import('../components/Home.vue'),
     meta: { title: '静态页面' }
   },
   {
-    path:'/exmaple',
-    component: () => import('../components/example.vue')
+    path: '/main',
+    component: () => import('../components/Main.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../components/Entrance.vue')
+      },
+    ]
   }
   // 其他路由...
 ]

@@ -35,7 +35,7 @@ import '../../public/web/css/style.css'
           </div>
 
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless" href="https://spxy.sicau.edu.cn/index.htm">降脂预测模型入口</a>
+            <a class="navbar-link is-arrowless" href="/#/main" target="_parent">降脂预测模型入口</a>
           </div>
 
           <li class="navbar-item">
