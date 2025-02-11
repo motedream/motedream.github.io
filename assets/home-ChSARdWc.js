@@ -1,1 +1,0 @@
-import{_ as o,c as t,a as r,o as s}from"./index-oXZaSjA_.js";const a={},c={class:"web-view"};function n(d,e){return s(),t("div",c,e[0]||(e[0]=[r("iframe",{src:"/web/index.html",frameborder:"0",width:"100%",height:"100%",scrolling:"auto"},null,-1)]))}const _=o(a,[["render",n],["__scopeId","data-v-ee2e1762"]]);export{_ as default};
