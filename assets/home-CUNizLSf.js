@@ -1,1 +1,0 @@
-import{_ as o,c as t,a as r,o as s}from"./index-DeURwUrg.js";const a={},c={class:"web-view"};function n(d,e){return s(),t("div",c,e[0]||(e[0]=[r("iframe",{src:"/web/index.html",frameborder:"0",width:"100%",height:"100%",scrolling:"auto"},null,-1)]))}const _=o(a,[["render",n],["__scopeId","data-v-349fe33a"]]);export{_ as default};
