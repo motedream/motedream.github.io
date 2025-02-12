@@ -1457,7 +1457,7 @@ mark {
 }
 
 .instagram-post img {
-  height: 160px;
+  height: 112px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1690,4 +1690,19 @@ mark {
   border-color: #4FD675;
   background: #4FD675;
   color: #fff;
+}
+
+#faculties{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  flex: none;
+  width: 360px;
+}
+
+@media (max-width: 1023px) {
+  #faculties {
+    top:80%;
+  }
 }

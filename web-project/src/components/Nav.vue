@@ -20,18 +20,7 @@ import '../../public/web/css/style.css'
         <div class="navbar-start mx-auto">
 
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-                藏茶研发成果展示
-            </a>    
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="index-full.html">藏茶精华液</a>
-              <a class="navbar-item" href="index-full-left.html">藏茶压片糖果</a>            
-              <a class="navbar-item" href="index-full-right.html">藏茶酸奶</a>              
-              <a class="navbar-item" href="index-list.html">藏茶核桃</a>              
-              <a class="navbar-item" href="index-list-left.html">藏茶胶囊</a>              
-              <a class="navbar-item" href="index-list-right.html">藏茶饮料</a>              
-              <a class="navbar-item" href="index-grid.html">藏茶粉剂</a>              
-            </div>
+            <a class="navbar-link is-arrowless" href="/" target="_parent">藏茶研发成果展示</a>
           </div>
 
           <div class="navbar-item has-dropdown is-hoverable">
@@ -39,7 +28,7 @@ import '../../public/web/css/style.css'
           </div>
 
           <li class="navbar-item">
-            <a class="navbar-link is-arrowless" href="https://spxy.sicau.edu.cn/index.htm">专家咨询</a>
+            <a class="navbar-link is-arrowless" href="https://spxy.sicau.edu.cn/index.htm" target="_parent">专家咨询</a>
           </li>
 
           <li class="navbar-item has-dropdown is-hoverable">
@@ -63,13 +52,13 @@ import '../../public/web/css/style.css'
       </div>
     </div>
   </nav>
-<!-- /导航栏 -->
     </div>
 </template>
 
 <style scoped>
 .navigation{
     height: 106px;
+    position: absolute;
 }
 .navbar-item img {
   max-height: initial!important;;
