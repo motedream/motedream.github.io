@@ -3,11 +3,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
-    component: () => import('../components/Home.vue'),
-    meta: { title: '静态页面' }
-  },
-  {
     path: '/main',
     component: () => import('../components/Main.vue'),
     children: [
@@ -24,5 +19,15 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
   routes
 })
+
+router.beforeEach((to, _, next) => {
+  const url = new URL(window.location.href);
+  const resolvedRoute = router.resolve(to);
+  if(resolvedRoute.href === "#/"){
+    window.location.href = `${url.origin}/web/index.html`;
+  }
+
+  next(); 
+});
 
 export default router

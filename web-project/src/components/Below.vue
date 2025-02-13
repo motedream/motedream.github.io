@@ -67,7 +67,7 @@ import '../../public/web/css/style.css'
           <ul class="card-meta list-inline">
             <li class="list-inline-item">
               <a href="https://www.ebi.ac.uk/chembl/" class="card-meta-author">
-                <img src="../assets/logo.jpg" alt="chembl">
+                <img src="../assets/tansoole.png" alt="chembl">
                 <span>chembl</span>
               </a>
             </li>

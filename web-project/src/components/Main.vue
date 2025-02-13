@@ -14,8 +14,5 @@ import Below from './Below.vue';
 <style scoped>
 .main{
     padding-top:106px;
-    height: 100%;
-    overflow: auto;
-    position: relative;
 }
 </style>

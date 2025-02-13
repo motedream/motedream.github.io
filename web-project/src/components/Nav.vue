@@ -58,7 +58,7 @@ import '../../public/web/css/style.css'
 <style scoped>
 .navigation{
     height: 106px;
-    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
 }
 .navbar-item img {
   max-height: initial!important;;

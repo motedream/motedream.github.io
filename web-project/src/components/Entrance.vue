@@ -15,10 +15,26 @@
               </div>
           </div>
           <p class="instruction-text">请提交数据以查看成分解析结果</p>
-          <button class="submit-btn" @click="submitData">
-            <span class="btn-text">提交数据</span>
-            <span class="btn-icon">→</span>
-          </button>
+          <div class="upload-section">
+            <input 
+              type="file" 
+              ref="fileInput"
+              accept=".xlsx, .xls" 
+              @change="handleFileUpload"
+              style="display: none;"
+            >
+            <button 
+              class="submit-btn" 
+              @click="triggerFileInput"
+              :disabled="isLoading"
+            >
+              <span v-if="!isLoading">
+                <span class="btn-text">{{ uploadBtnText }}</span>
+                <span class="btn-icon">→</span>
+              </span>
+              <span v-else>处理中...</span>
+            </button>
+          </div>
         </div>
       </div>
       
@@ -44,9 +60,15 @@
   <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import Chart from 'chart.js/auto';
+  import * as XLSX from 'xlsx';
+  import axios from 'axios';
   
   const chartRef = ref<HTMLCanvasElement | null>(null);
   const chartInstance = ref<Chart | null>(null);
+  const fileInput = ref<HTMLInputElement | null>(null);
+  const isLoading = ref(false);
+  const uploadBtnText = ref('上传Excel文件');
+  const rocData = ref<{ fpr: number; tpr: number }[]>([]);
   
   // 模拟评估指标数据
   const metrics = ref([
@@ -58,10 +80,78 @@
     { name: 'BAl', value: '0.93', color: '#A0D7E7' },
   ]);
   
-  const submitData = () => {
-    renderChart();
-  };
   
+  // 触发文件选择对话框
+  const triggerFileInput = () => {
+    fileInput.value?.click();
+  };
+
+// 处理文件上传
+const handleFileUpload = async (event: Event) => {
+  const input = event.target as HTMLInputElement;
+  if (!input.files?.[0]) return;
+
+  isLoading.value = true;
+  uploadBtnText.value = '解析数据中...';
+
+  try {
+    // 1. 上传文件
+    const formData = new FormData();
+    formData.append('excel', input.files[0]);
+    const apiBaseUrl = import.meta.env.VITE_API_URL;
+    const subEndpoint = import.meta.env.VITE_IMPORT; 
+    const response = await axios.post(`${apiBaseUrl}${subEndpoint}`, formData, {
+      responseType: 'arraybuffer',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log(response)
+    // 2. 解析返回的Excel
+    const workbook = XLSX.read(new Uint8Array(response.data), { type: 'array' });
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    
+    // 3. 提取ROC数据（假设第一列是FPR，第二列是TPR）
+    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    rocData.value = rawData.slice(1).map(row => ({
+      fpr: parseFloat((row as any[])[0]),
+      tpr: parseFloat((row as any[])[1])
+    }));
+
+    // 4. 更新指标数据（假设第二个Sheet存储指标）
+    const metricSheet = workbook.Sheets[workbook.SheetNames[1]];
+    const metricData = XLSX.utils.sheet_to_json(metricSheet);
+    metrics.value = metricData.map((item: any) => ({
+      name: item.Metric,
+      value: item.Value,
+      color: getColorByMetric(item.Metric)
+    }));
+
+    // 5. 渲染图表
+    renderChart();
+
+  } catch (error) {
+    console.error('文件处理失败:', error);
+    alert('文件处理失败，请检查文件格式');
+  } finally {
+    isLoading.value = false;
+    uploadBtnText.value = '重新上传文件';
+  }
+};
+
+// 颜色映射函数
+const getColorByMetric = (metric: string) => {
+  const colorMap: { [key: string]: string } = {
+    'Pre': '#4FD675',
+    'Se': '#6C5DD3',
+    'Sp': '#FF754C',
+    'Fl': '#FFA2C0',
+    'Ga': '#7FBA7A',
+    'BAl': '#A0D7E7'
+  };
+  return colorMap[metric] || '#999';
+};
+
   const renderChart = () => {
     if (!chartRef.value) return;
     
@@ -72,14 +162,6 @@
       chartInstance.value.destroy();
     }
   
- // ROC曲线模拟数据 (FPR, TPR)
- const rocData = [
-    { fpr: 0.0, tpr: 0.0 },
-    { fpr: 0.2, tpr: 0.6 },
-    { fpr: 0.4, tpr: 0.75 },
-    { fpr: 0.6, tpr: 0.9 },
-    { fpr: 1.0, tpr: 1.0 }
-  ];
 
   chartInstance.value = new Chart(ctx, {
     type: 'line',
@@ -87,7 +169,7 @@
       datasets: [
         {
           label: 'ROC Curve',
-          data: rocData.map(p => ({ x: p.fpr, y: p.tpr })),
+          data: rocData.value.map(p => ({ x: p.fpr, y: p.tpr })),
           borderColor: '#4FD675',
           backgroundColor: 'rgba(79, 214, 117, 0.1)',
           borderWidth: 3,
@@ -273,4 +355,30 @@
     font-weight: bold;
     color: #4FD675;
   }
+
+  /* 新增上传相关样式 */
+.upload-section {
+  margin: 20px 0;
+}
+
+.submit-btn[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #eee;
+  margin-top: 8px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-inner {
+  height: 100%;
+  background-color: #4FD675;
+  transition: width 0.3s ease;
+}
   </style>
