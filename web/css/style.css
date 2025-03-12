@@ -164,7 +164,7 @@ hr {
 }
 
 .shadow, .promotion, .logo-list li, .widget, .card {
-  box-shadow: 0px 25px 65px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 0 8px rgb(0, 0, 0, .1) !important;
 }
 
 .mark,
@@ -330,7 +330,7 @@ mark {
 }
 
 .container {
-  padding: 0 15px;
+  padding: 0 30px;
 }
 @media (max-width: 1023px) {
   .container {
@@ -872,9 +872,20 @@ mark {
   border: 0;
   background-color: #fff;
   transition: 0.2s ease;
+  display: flex;
+  padding: 25px;
+}
+@media screen and (max-width: 1216px){
+  .card{
+    display: inline-block;
+  }
+  .card-body {
+    padding: 25px;
+    margin: 0;
+  }
 }
 .card-body {
-  padding: 25px;
+  padding-left: 20px;
 }
 .card-img-sm {
   height: 85px;
@@ -1457,7 +1468,7 @@ mark {
 }
 
 .instagram-post{
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .instagram-post img {
@@ -1710,16 +1721,80 @@ mark {
     top:80%;
   }
 }
-.second-banner{
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 50%;
-  margin: 0 auto;
+
+.card-img-top{
+  position: relative;
+  top: 0;
+  left: 0;
 }
-@media (max-width: 1023px) {
-  .second-banner{
-    width: 80%;
+.banner-cotent{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding-right: 40px;
   }
+.banner-title{
+  margin:12vw 0 3vw;
+  color: #fff;
+  text-align: right;
+  font-size: 30px;
+}
+.banner-en{
+  color: #fff;
+  text-align: right;
+  margin: 0;
+  font-size: 20px;
+}
+
+@media (max-width: 1023px) {
+  .banner-cotent {
+    padding:0;
+  }
+  .banner-title{
+    text-align: center;
+    font-size: 20px;
+  }
+  .banner-en{
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+.column.is-4-widescreen {
+  width: 100%;
+}
+.card .post-slider{
+  width: 350px;
+}
+#tea-img{
+  width:240px;
+}
+@media screen and (max-width: 1216px){
+  .card .post-slider{
+    width: 100%;
+  }
+  #tea-img{
+    width:100%;
+  }
+}
+.card-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-flex .card{
+  width: 40%;
+}
+@media screen and (max-width: 1024px){
+  .card-flex .card{
+    width: 100%;
+  }
+}
+.card p{
+  font-size: 17px;
 }
