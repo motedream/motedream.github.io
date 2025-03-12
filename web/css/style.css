@@ -1466,18 +1466,20 @@ mark {
 .quote-by {
   color: #4FD675;
 }
-
+.instagram-flex{
+  display: flex;
+  width: 1150px;
+  margin: 0 auto;
+}
 .instagram-post{
-  height: 100px;
-  width: 150px;
+  height: 100px!important;
+  width: 150px!important;
   margin: 0 20px;
 }
 
 .instagram-post img {
-  height: 100px;
-  width: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .error {
@@ -1718,7 +1720,7 @@ mark {
   width: 380px;
 }
 
-@media (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
   #faculties {
     top:80%;
   }
@@ -1743,12 +1745,16 @@ mark {
   color: #fff;
   text-align: right;
   font-size: 30px;
+  font-weight: bold;
+
+  font-family: 'Courier New', Courier, monospace;
 }
 .banner-en{
   color: #fff;
   text-align: right;
   margin: 0;
   font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 @media (max-width: 1023px) {
