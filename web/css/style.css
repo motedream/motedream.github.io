@@ -1758,19 +1758,22 @@ mark {
 
 @media (max-width: 1023px) {
   .banner-cotent {
-    padding:0;
+    height: 30px;
   }
   .banner-title{
-    text-align: center;
-    font-size: 20px;
-  }
-  .banner-en{
-    color: #fff;
-    text-align: center;
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 33px;
   }
 }
-
+@media (max-width: 700px) {
+  .banner-cotent {
+    height: 20px;
+  }
+  .banner-title{
+    font-size: 12px;
+    line-height: 23px;
+  }
+}
 .column.is-4-widescreen {
   width: 100%;
   margin-top: 10px;
