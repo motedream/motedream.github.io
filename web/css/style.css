@@ -347,7 +347,7 @@ mark {
 }
 
 .img-fluid {
-  max-width: 100%;
+  width: 150px;
   height: auto;
 }
 
@@ -472,6 +472,7 @@ mark {
   transition: 0.2s ease;
   padding: 5px 0 !important;
   background-color: transparent;
+  height: 20px;
 }
 .navigation.nav-bg {
   background-color: #fff;
@@ -653,7 +654,7 @@ mark {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  padding: 94px 0 0;
+  padding: 53px 0 0;
 }
 .banner .container {
   position: relative;
@@ -1717,7 +1718,7 @@ mark {
 
 #faculties{
   position: absolute;
-  top: 50%;
+  top: 40%;
   left:50%;
   transform: translate(-50%,-50%);
   flex: none;
@@ -1741,37 +1742,28 @@ mark {
   left: 0;
   transform: translate(0,-100%);
   width: 100%;
-  height: 40px;
-  background: rgba(0, 51, 102, 0.4);
+  height: 3.5vw;
   }
 .banner-title{
   width: 100%;
   height: 100%;
-  line-height: 45px;
+  line-height: 3.5vw;
   padding-left: 18px;
   margin:0;
   color: #fff;
   text-align: left;
-  font-size: 20px;
+  font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
 }
 
 @media (max-width: 1023px) {
-  .banner-cotent {
-    height: 30px;
-  }
   .banner-title{
     font-size: 15px;
-    line-height: 33px;
   }
 }
 @media (max-width: 700px) {
-  .banner-cotent {
-    height: 20px;
-  }
   .banner-title{
     font-size: 12px;
-    line-height: 23px;
   }
 }
 .column.is-4-widescreen {
@@ -1808,4 +1800,15 @@ mark {
 }
 .card p{
   font-size: 17px;
+}
+@media screen and (max-width: 1023px) {
+  #bottom .border-bottom{
+    transform: translate(0, 10px);
+  }
+}
+@media screen and (min-width: 1023px) {
+  #img-bottom{
+    margin: 0!important;
+    padding: 0;
+  }
 }
