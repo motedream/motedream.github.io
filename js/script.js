@@ -181,7 +181,7 @@ class ScrollAnimator {
 let isModalOpen = false;
 let modalContent = modal.querySelector('.modal-content');
 let modalExplain = explain.querySelector('.explain-modal');
-let modalAppDetails = document.getElementById('app-details').querySelector('.explain-modal');
+let modalAppDetails = details.querySelector('.explain-modal');
 let modalSelect = null
 let Select = null
 function showModal(type) {
@@ -189,7 +189,7 @@ function showModal(type) {
         modalSelect = modalContent
     }else if(type === 'explain'){
         modalSelect = modalExplain
-    }else if(type === 'app-details'){
+    }else if(type === 'details'){
         modalSelect = modalAppDetails
     }
     Select = type
@@ -207,8 +207,8 @@ function showModal(type) {
         modal.style.display = 'flex';
     }else if(type === 'explain'){
         explain.style.display = 'flex';
-    }else if(type === 'app-details'){
-        document.getElementById('app-details').style.display = 'flex';
+    }else if(type === 'details'){
+        details.style.display = 'flex';
     }
 }
 
@@ -226,8 +226,8 @@ function closeModal() {
         modal.style.display = 'none';
     }else if(Select === 'explain'){
         explain.style.display = 'none';
-    }else if(Select === 'app-details'){
-        document.getElementById('app-details').style.display = 'none';
+    }else if(Select === 'details'){
+        details.style.display = 'none';
     }
 }
 
