@@ -16,6 +16,11 @@
             <span>在川<span class="nong">农</span><span class="yu">屿</span>见你</span>
         </h1>
         <p style="color: var(--primary-green); margin-bottom: 1rem;">农屿APP 川农智慧助手</p>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
+            <a href="app-details.html" style="color: #418D42; text-decoration: none; border-bottom: 1px dotted #418D42;">
+                <i class="fas fa-info-circle"></i> 查看详细技术说明
+            </a>
+        </p>
         
         <a href="https://www.pgyer.com/1yq4j5wX" class="download-btn">
             <i class="fas fa-download" style="margin-right: 10px;"></i>
@@ -26,6 +31,7 @@
             <div class="feature-icon" onclick="showModal('modal')"><i class="fas fa-book"></i></div>
             <div class="feature-icon" data-copy="327303003"><i class="fas fa-comments"></i></div>
             <div class="feature-icon" onclick="showModal('explain')"><i class="fas fa-star"></i></div>
+            <div class="feature-icon" onclick="showModal('app-details')"><i class="fas fa-info-circle"></i></div>
         </div>
     </div>
 
@@ -274,6 +280,221 @@
                   <p>请大家不要在公共言论区域发表任何带有侮辱他人、伤害他人的言论；请大家客观发表争对食堂饭店以及老师课程的评价；</p>
                   <br>
                     <p>若刚刚登录后发现课表无法显示，您可重新进入农屿，若还是无法解决，您可联系开发者告知bug，当然您还可以删除农屿，再大骂一声哪个sb做的软件</p>
+                </div>
+              </section>
+            </div>
+      
+            <!-- 底部操作区 -->
+            <footer class="explain-footer">
+              <button class="explain-button" onclick="closeModal()">
+                <i class="fas fa-check"></i>
+                我已了解
+              </button>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+    <!-- 详细应用介绍弹窗 -->
+    <div class="explain-popup" id="app-details">
+        <div class="explain-modal" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+          <!-- 关闭按钮 -->
+          <span class="explain-close" onclick="closeModal()">&times;</span>
+          
+          <!-- 弹窗内容 -->
+          <div class="explain-content">
+            <!-- 标题区 -->
+            <header class="explain-header">
+              <i class="fas fa-mobile-alt"></i>
+              <h2>农屿APP详细技术说明</h2>
+              <p class="explain-subtitle">微信开放平台应用信息</p>
+            </header>
+      
+            <!-- 详细说明内容 -->
+            <div class="explain-body">
+              
+              <!-- 应用概述 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-info-circle"></i> 应用概述</h3>
+                <div class="explain-card">
+                  <p><strong>应用名称：</strong>农屿川农校园助手</p>
+                  <p><strong>应用类型：</strong>校园服务类移动应用</p>
+                  <p><strong>目标用户：</strong>四川农业大学在校学生</p>
+                  <p><strong>用户规模：</strong>面向川农约3万余名师生</p>
+                  <p><strong>开发框架：</strong> uni-app</p>
+                  <p><strong>数据存储：</strong>本地SQLite数据库 + 云端数据同步</p>
+                </div>
+              </section>
+
+              <!-- 核心功能详解 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-cogs"></i> 核心功能详解</h3>
+                
+                <div class="explain-card">
+                  <h4><i class="fas fa-calendar-alt"></i> 智能课表管理</h4>
+                  <ul>
+                    <li>通过教务网API自动同步用户课表数据</li>
+                    <li>支持课表离线查看，无需重复登录</li>
+                    <li>旷课次数统计与提醒功能</li>
+                    <li>课程时间冲突检测</li>
+                    <li>课表分享功能</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4><i class="fas fa-comments"></i> 校园社区交流</h4>
+                  <ul>
+                    <li>食堂窗口评分系统（1-5星评价）</li>
+                    <li>课程评价与选课建议</li>
+                    <li>校园论坛讨论功能</li>
+                    <li>内容审核机制，确保言论合规</li>
+                    <li>用户身份验证，仅限川农师生</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4><i class="fas fa-graduation-cap"></i> 教务信息查询</h4>
+                  <ul>
+                    <li>成绩查询与学分统计</li>
+                    <li>专业排名查看</li>
+                    <li>教务通知实时推送</li>
+                    <li>重要网址导航</li>
+                    <li>考试安排查询</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4><i class="fas fa-trophy"></i> 竞赛信息发布</h4>
+                  <ul>
+                    <li>校园竞赛信息推送</li>
+                    <li>教学通知及时获取</li>
+                    <li>活动报名功能</li>
+                    <li>获奖信息展示</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 技术架构 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-microchip"></i> 技术架构</h3>
+                <div class="explain-card">
+                  <h4>前端技术栈</h4>
+                  <ul>
+                    <li>uni-app</li>
+                    <li>响应式布局，适配多种屏幕尺寸</li>
+                    <li>本地缓存机制，提升用户体验</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4>后端服务</h4>
+                  <ul>
+                    <li>Spring Boot框架</li>
+                    <li>MySQL数据库存储</li>
+                    <li>Redis缓存优化</li>
+                    <li>RESTful API接口设计</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4>数据安全</h4>
+                  <ul>
+                    <li>用户密码本地加密存储</li>
+                    <li>教务网账号信息不保存</li>
+                    <li>唯一设备登录机制</li>
+                    <li>数据传输加密</li>
+                    <li>用户隐私保护</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 合规性说明 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-shield-alt"></i> 合规性说明</h3>
+                <div class="explain-card">
+                  <h4>内容审核机制</h4>
+                  <ul>
+                    <li>用户发布内容需通过关键词过滤</li>
+                    <li>禁止发布侮辱性、攻击性言论</li>
+                    <li>客观评价食堂和课程，避免恶意攻击</li>
+                    <li>用户举报机制，及时处理违规内容</li>
+                    <li>管理员审核制度</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4>用户身份验证</h4>
+                  <ul>
+                    <li>仅限四川农业大学师生使用</li>
+                    <li>通过教务网账号验证身份</li>
+                    <li>防止校外人员恶意注册</li>
+                    <li>保护校园信息安全</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4>数据保护</h4>
+                  <ul>
+                    <li>严格遵守《网络安全法》</li>
+                    <li>用户个人信息最小化收集</li>
+                    <li>不收集非必要的敏感信息</li>
+                    <li>用户可随时删除个人数据</li>
+                    <li>定期数据安全审计</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 商业模式 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-coins"></i> 商业模式</h3>
+                <div class="explain-card">
+                  <h4>免费服务模式</h4>
+                  <ul>
+                    <li>完全免费使用，无任何收费功能</li>
+                    <li>零广告干扰，纯净用户体验</li>
+                    <li>开源社区贡献，学生开发者项目</li>
+                    <li>非营利性质，为爱发电</li>
+                    <li>团队自费开发维护</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 开发团队 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-users"></i> 开发团队</h3>
+                <div class="explain-card">
+                  <h4>团队信息</h4>
+                  <ul>
+                    <li><strong>团队名称：</strong>农屿开发团队</li>
+                    <li><strong>团队性质：</strong>学生开发者团队</li>
+                    <li><strong>联系方式：</strong>2898545529@qq.com</li>
+                    <li><strong>QQ交流群：</strong>327303003</li>
+                    <li><strong>版权信息：</strong>软著登字第16022346号</li>
+                    <li><strong>开发动机：</strong>解决川农师生校园服务痛点</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 发展规划 -->
+              <section class="explain-section">
+                <h3><i class="fas fa-chart-line"></i> 发展规划</h3>
+                <div class="explain-card">
+                  <h4>短期目标</h4>
+                  <ul>
+                    <li>完善现有功能，提升用户体验</li>
+                    <li>扩大用户群体，提高活跃度</li>
+                    <li>优化性能，提升应用稳定性</li>
+                    <li>收集用户反馈，持续改进</li>
+                  </ul>
+                </div>
+
+                <div class="explain-card">
+                  <h4>长期愿景</h4>
+                  <ul>
+                    <li>打造川农专属的数字校园生态</li>
+                    <li>成为川农师生必备的校园应用</li>
+                    <li>推动校园信息化建设</li>
+                  </ul>
                 </div>
               </section>
             </div>
