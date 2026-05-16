@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>带双王逃离 (Escape with Double Kings) - 团队官方极客主页</title>
+    <!-- 引入 Tailwind CSS 基础库 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 全局深度暗黑太空背景与多重极光晕染 */
+        body {
+            background-color: #020617;
+            background-image: 
+                linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 7, 32, 0.98) 100%),
+                radial-gradient(at 10% 20%, rgba(16, 185, 129, 0.08) 0px, transparent 45%),
+                radial-gradient(at 90% 80%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.06) 0px, transparent 60%);
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 3D 科技网格流动动效 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+            transform: perspective(500px) rotateX(15deg);
+            transform-origin: top;
+            opacity: 0.7;
+        }
+
+        /* 液体霓虹多色炫光流体文字动画 */
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .shimmer-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981, #6366f1, #ec4899, #3b82f6);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 8s linear infinite;
+        }
+
+        /* 高级全息毛玻璃卡片样式 */
+        .hologram-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hologram-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(16, 185, 129, 0.25);
+            box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.12), 0 0 40px -5px rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-glow { box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+        .timeline-line::before {
+            content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #10b981, #6366f1); opacity: 0.2;
+        }
+        @media (min-width: 768px) { .timeline-line::before { left: 50%; transform: translateX(-50%); } }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="text-slate-200 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+
+    <!-- 1. 全息浮动导航栏 -->
+    <nav class="border-b border-white/5 bg-slate-950/60 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 group cursor-pointer">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-emerald-400 flex items-center justify-center font-black text-white text-lg shadow-xl shadow-indigo-500/20 group-hover:rotate-12 transition-all duration-300">
+                    👑
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-lg tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">带双王逃离</span>
+                    <span class="text-[9px] text-emerald-400 font-mono tracking-widest -mt-0.5">ESCAPE WITH DOUBLE KINGS</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wider text-slate-400">
+                <a href="#vision" class="hover:text-emerald-400 transition-colors">战队愿景</a>
+                <a href="#members" class="hover:text-emerald-400 transition-colors">核心编队</a>
+                <a href="#rules" class="hover:text-emerald-400 transition-colors">黑客公约</a>
+                <a href="#roadmap" class="hover:text-emerald-400 transition-colors">产品路线</a>
+                <a href="#terminal" class="hover:text-emerald-400 transition-colors">互动沙盒</a>
+            </div>
+            <div class="flex items-center space-x-2 px-3 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 font-mono text-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>ESC_NODE_RUNNING</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. 巨幕声光电首屏 (Hero Section) -->
+    <header id="vision" class="max-w-5xl mx-auto text-center py-24 px-6 relative">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-xs font-mono tracking-widest uppercase mb-8 shadow-inner">
+            <span>⚡ AI DESIGN & DEVELOPMENT FORCE</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-black mb-8 tracking-tight leading-[1.15] text-white">
+            带双王逃离：<br>
+            <span class="shimmer-text">做不被定义的先锋战队</span>
+        </h1>
+        <p class="text-slate-400 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-light mb-12">
+            “凝聚精锐之力，开拓智能之境。” 我们打破学科与算法的冰冷壁垒，通过极致的体验画布与强悍的工程架构，带领用户逃离低效，奔向智能化未来。
+        </p>
+    </header>
+
+    <!-- 3. 全息核心编队 (Members Section) -->
+    <section id="members" class="max-w-6xl mx-auto px-6 py-16 relative">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">👥 5人极客战队矩阵</h2>
+            <p class="text-slate-400 text-sm font-light">精锐协作，全栈打通</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 mx-auto rounded-full mt-4"></div>
+        </div>
+        
+        <!-- 双核心卡片 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-10">
+            <!-- 组长：王鑫国 -->
+            <div class="hologram-card p-8 rounded-3xl relative group">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-blue-500/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-2xl font-bold text-blue-400">王</div>
+                        <div>
+                            <h3 class="font-bold text-xl text-white">王鑫国 <span class="text-sm font-normal text-slate-400">(组长)</span></h3>
+                            <p class="text-xs text-blue-400 font-mono tracking-wider mt-0.5">Product & UX Lead Architect</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono bg-blue-500/10 text-blue-400 px-2 py-1 rounded">LEADER</span>
+                </div>
+                <p class="text-slate-400 text-sm font-light mb-6">主导产品全局孵化。负责核心场景痛点解构、原型画布绘制，全面把控敏捷看板与双周交付质量。</p>
+                <!-- 技能条 -->
+                <div class="space-y-3 border-t border-white/5 pt-4">
+                    <div class="flex justify-between text-xs font-mono text-slate-300"><span>战略控盘与场景定义</span><span>95%</span></div>
+                    <div class="w-full bg-slate-950 h-1 rounded-full"><div class="bg-blue-500 h-full rounded-full" style="width: 95%"></div></div>
+                </div>
+            </div>
+            
+            <!-- 技术支持：陶军红 -->
+            <div class="hologram-card p-8 rounded-3xl relative group">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-center text-2xl font-bold text-emerald-400">陶</div>
+                        <div>
+                            <h3 class="font-bold text-xl text-white">陶军红 <span class="text-sm font-normal text-slate-400">(技术支持)</span></h3>
+                            <p class="text-xs text-emerald-400 font-mono tracking-wider mt-0.5">AI Engine & Full-Stack Engineer</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded">TECH_LEAD</span>
+                </div>
+                <p class="text-slate-400 text-sm font-light mb-6">攻克技术硬核骨架。主管 LLM API 底层联调、高性能流式数据传输设计、系统安全与容器化部署。</p>
+                <div class="space-y-3 border-t border-white/5 pt-4">
+                    <div class="flex justify-between text-xs font-mono text-slate-300"><span>模型API架构与服务部署</span><span>94%</span></div>
+                    <div class="w-full bg-slate-950 h-1 rounded-full"><div class="bg-emerald-500 h-full rounded-full" style="width: 94%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 三核心组员卡片并排 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <!-- 王亦民 -->
+            <div class="hologram-card p-6 rounded-2xl">
+                <h4 class="font-bold text-lg text-white mb-1">王亦民</h4>
+                <p class="text-xs text-indigo-400 font-mono uppercase mb-3">UI Dev Specialist</p>
+                <p class="text-slate-400 text-xs font-light leading-relaxed">主攻高保真交互组件还原，确保平台在PC端与手机移动端均具备平滑顺畅的极客触控视听体验。</p>
+            </div>
+            <!-- 李白涛 -->
+            <div class="hologram-card p-6 rounded-2xl">
+                <h4 class="font-bold text-lg text-white mb-1">李白涛</h4>
+                <p class="text-xs text-cyan-400 font-mono uppercase mb-3">Prompt & Data Engineer</p>
+                <p class="text-slate-400 text-xs font-light leading-relaxed">负责 Prompt 场景靶场测试、数据集高效清洗和语义调优，为前端输出最精准、极低延迟的代码响应。</p>
+            </div>
+            <!-- 代辉 -->
+            <div class="hologram-card p-6 rounded-2xl">
+                <h4 class="font-bold text-lg text-white mb-1">代辉</h4>
+                <p class="text-xs text-purple-400 font-mono uppercase mb-3">QA & Market Analyst</p>
+                <p class="text-slate-400 text-xs font-light leading-relaxed">专注于垂直领域深度竞品调研与商业化潜力评估，同步对系统逻辑进行全链路黑盒边界压力测试。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 内部管理公约 -->
+    <section id="rules" class="max-w-4xl mx-auto px-6 py-12">
+        <div class="hologram-card rounded-3xl p-8 sm:p-10 border border-emerald-500/10">
+            <h2 class="text-2xl font-bold tracking-wide text-white mb-6 flex items-center"><span class="text-emerald-400 mr-2">⚡</span> 战队运行黑客公约</h2>
+            <div class="space-y-4 text-sm font-light text-slate-400">
+                <p><strong class="text-white">01. 敏捷看板推进：</strong>所有开发与分析任务细化上线 Notion，单项工作颗粒度严控在 48 小时以内。</p>
+                <p><strong class="text-white">02. 闪餐对齐机制：</strong>每周一、五举行 15 分钟快速同步，只对齐三件事：已攻克、下一步、目前卡点，现场当即清障。</p>
+                <p><strong class="text-white">03. 零无序代码规范：</strong>Git Commit 严格遵循 `feat:` / `fix:` 语意前缀，交互代码模块化，绝不留技术债。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 互动实验室沙盒 -->
+    <section id="terminal" class="max-w-4xl mx-auto px-6 py-12 mb-20">
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden font-mono text-xs sm:text-sm p-6 text-emerald-400 space-y-4">
+            <p class="text-slate-500">// 欢迎进入“带双王逃离”AI 互动模拟终端</p>
+            <p class="text-slate-300"><span class="text-indigo-400">guest@escape_team:~$</span> ./check_status</p>
+            <div class="bg-slate-900/60 p-4 rounded-xl text-slate-300">
+                <span class="text-yellow-400 font-bold">【战队自检回执】</span><br>
+                - 队名：带双王逃离 (先锋战队)<br>
+                - 组长：王鑫国 | 技术支持：陶军红<br>
+                - 梯队：王亦民(UI) / 李白涛(数据) / 代辉(QA)<br>
+                - 状态：凝聚精锐之力，智能之境节点已全部打通。
+            </div>
+            <div class="flex items-center space-x-2 pt-2">
+                <span>▲</span>
+                <input type="text" id="term-in" placeholder="输入 'vision' 或 'help'..." class="bg-transparent border-b border-slate-800 focus:border-emerald-500/50 outline-none text-white w-full max-w-xs pb-0.5">
+                <button onclick="execCmd()" class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-3 py-0.5 rounded text-xs hover:bg-emerald-500 hover:text-slate-950 transition-all">执行</button>
+            </div>
+            <p id="term-out" class="text-indigo-400 text-xs hidden"></p>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-slate-500 font-mono">
+        © 2026 ESCAPE TEAM WITH DOUBLE KINGS. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        function execCmd() {
+            const i = document.getElementById('term-in').value.trim().toLowerCase();
+            const o = document.getElementById('term-out'); o.classList.remove('hidden');
+            if(i === 'vision') o.innerText = ">> 队呼：凝聚精锐之力，开拓智能之境，做不被定义的先锋战队。";
+            else if(i === 'help') o.innerText = ">> 可用指令: 'vision', 'clear'";
+            else if(i === 'clear') { o.innerText = ""; o.classList.add('hidden'); document.getElementById('term-in').value=""; }
+            else o.innerText = ">> 未知指令. 输入 'help' 查看。";
+        }
+    </script>
+</body>
+</html>
